@@ -1,0 +1,39 @@
+{
+  "approvals": {
+    "metadata": {
+      "actor": "hwangjt",
+      "approved_at": "2026-07-27T20:53:06+00:00",
+      "proposal_sha256": "0e26dc73ed574ef5d9d304a5af6434487834d3a6bf0e23260c74732c3624829d"
+    },
+    "rights": null
+  },
+  "authorization_mac": "30a85be36ed89e0baf4ff493b64951a2982efa4a7b85fc3c803ac56e94bb8b25",
+  "envelope_sha256": "04305cda72146c8ca5114f1d26e45e407019946530047b9d302205a721477467",
+  "files": [
+    {
+      "bytes": 452,
+      "path": "catalog/publications.bib",
+      "sha256": "0e26dc73ed574ef5d9d304a5af6434487834d3a6bf0e23260c74732c3624829d"
+    }
+  ],
+  "idempotency_key": "47b1e45feaabaef47a3a163c3a3d358e9ed050d555871e552ccd5742b2300d0f",
+  "proposal": {
+    "artifact_kind": null,
+    "metadata_only": true,
+    "pdf_bytes": 0,
+    "pdf_sha256": null,
+    "sha256": "0e26dc73ed574ef5d9d304a5af6434487834d3a6bf0e23260c74732c3624829d"
+  },
+  "schema_version": 1,
+  "source": {
+    "actor": "hwangjt",
+    "comment_id": 5096690719,
+    "head_sha": "c12841af28049925ceb1a787ba139921f3b71346",
+    "pr": 1,
+    "repository": "LSDOlab/lsdo-publications-intake-disposable"
+  },
+  "target": {
+    "base_sha": "1e39877263946ef39d1b8c28e8e0b7b950e0647f",
+    "repository": "LSDOlab/lsdo-publications-target-disposable"
+  }
+}
