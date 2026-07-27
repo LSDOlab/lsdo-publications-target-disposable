@@ -2,38 +2,38 @@
   "approvals": {
     "metadata": {
       "actor": "hwangjt",
-      "approved_at": "2026-07-27T20:53:06+00:00",
-      "proposal_sha256": "0e26dc73ed574ef5d9d304a5af6434487834d3a6bf0e23260c74732c3624829d"
+      "approved_at": "2026-07-27T21:28:58+00:00",
+      "proposal_sha256": "10b52983a5e2de34dcea7109bca6d4d11e36dd6edb685d02d181d622424d14bc"
     },
     "rights": null
   },
-  "authorization_mac": "30a85be36ed89e0baf4ff493b64951a2982efa4a7b85fc3c803ac56e94bb8b25",
-  "envelope_sha256": "04305cda72146c8ca5114f1d26e45e407019946530047b9d302205a721477467",
+  "authorization_mac": "44db187620ce22b7f8fc07c4a7a80c7ca113581d073403705fe5ee404b473852",
+  "envelope_sha256": "960508583895f36dd7249a20315a24ad39fa59b5eb217963de1ad2661b0afeab",
   "files": [
     {
-      "bytes": 452,
+      "bytes": 749,
       "path": "catalog/publications.bib",
-      "sha256": "0e26dc73ed574ef5d9d304a5af6434487834d3a6bf0e23260c74732c3624829d"
+      "sha256": "10b52983a5e2de34dcea7109bca6d4d11e36dd6edb685d02d181d622424d14bc"
     }
   ],
-  "idempotency_key": "47b1e45feaabaef47a3a163c3a3d358e9ed050d555871e552ccd5742b2300d0f",
+  "idempotency_key": "1950a3ab725b72afa1bc0003d60473b4ef6768c4d1ea22758991ea151f394d88",
   "proposal": {
     "artifact_kind": null,
     "metadata_only": true,
     "pdf_bytes": 0,
     "pdf_sha256": null,
-    "sha256": "0e26dc73ed574ef5d9d304a5af6434487834d3a6bf0e23260c74732c3624829d"
+    "sha256": "10b52983a5e2de34dcea7109bca6d4d11e36dd6edb685d02d181d622424d14bc"
   },
   "schema_version": 1,
   "source": {
     "actor": "hwangjt",
-    "comment_id": 5096690719,
-    "head_sha": "c12841af28049925ceb1a787ba139921f3b71346",
-    "pr": 1,
+    "comment_id": 5097012228,
+    "head_sha": "291077df9158fbc3151fbd0699d228af16d14b5a",
+    "pr": 2,
     "repository": "LSDOlab/lsdo-publications-intake-disposable"
   },
   "target": {
-    "base_sha": "1e39877263946ef39d1b8c28e8e0b7b950e0647f",
+    "base_sha": "54fa90237702751a046c00f556b507387c8a46dc",
     "repository": "LSDOlab/lsdo-publications-target-disposable"
   }
 }
