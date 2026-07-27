@@ -1,0 +1,22 @@
+name: validate-promotion
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  authorization-envelope:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify authenticated envelope and exact changed bytes
+        env:
+          PROMOTION_AUTHORIZATION_KEY: ${{ secrets.PROMOTION_AUTHORIZATION_KEY }}
+        run: python3 tools/target_check.py
