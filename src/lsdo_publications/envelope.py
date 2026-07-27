@@ -11,6 +11,7 @@ from .errors import PublicationError
 from .util import sha256_bytes, sha256_file, stable_json
 
 DIGEST_RE = re.compile(r"^[0-9a-f]{64}$")
+GIT_OID_RE = re.compile(r"^(?:[0-9a-f]{40}|[0-9a-f]{64})$")
 REPOSITORY_RE = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 SAFE_CATALOG_PATHS = {
     "catalog/publications.bib",
@@ -149,10 +150,11 @@ def verify_envelope(envelope: dict[str, Any], signing_key: bytes | None = None) 
     for name, value in (
         ("source head", source.get("head_sha")),
         ("target base", target.get("base_sha")),
-        ("proposal", proposal.get("sha256")),
     ):
-        if not DIGEST_RE.fullmatch(str(value or "")):
-            _fail("E_ENVELOPE_DIGEST", f"invalid {name} digest")
+        if not GIT_OID_RE.fullmatch(str(value or "")):
+            _fail("E_ENVELOPE_DIGEST", f"invalid {name} object ID")
+    if not DIGEST_RE.fullmatch(str(proposal.get("sha256") or "")):
+        _fail("E_ENVELOPE_DIGEST", "invalid proposal digest")
     metadata = approvals.get("metadata") or {}
     if (
         metadata.get("actor") != source.get("actor")
