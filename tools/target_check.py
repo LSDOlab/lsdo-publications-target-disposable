@@ -13,6 +13,9 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from lsdo_publications.envelope import verify_target_tree  # noqa: E402
 from lsdo_publications.errors import PublicationError  # noqa: E402
+from lsdo_publications.bibtex import load_bibtex, validate_entries  # noqa: E402
+from lsdo_publications.pdf import inspect_pdf  # noqa: E402
+from lsdo_publications.rights import validate_artifacts  # noqa: E402
 
 
 def git(*args: str) -> bytes:
@@ -69,6 +72,25 @@ def main() -> int:
                 target_base_sha=base,
                 signing_key=key.encode("utf-8"),
             )
+            entries = load_bibtex(tree / "catalog" / "publications.bib")
+            catalog_errors = validate_entries(entries)
+            rights_errors = validate_artifacts(tree)
+            if catalog_errors or rights_errors:
+                raise PublicationError(
+                    "E_TARGET_VALIDATION",
+                    "; ".join(catalog_errors + rights_errors),
+                )
+            inspected = []
+            for pdf in sorted(tree.glob("pdf/*/*.pdf")):
+                pdf_report = inspect_pdf(pdf)
+                if pdf_report["outcome"] != "identifiers-found":
+                    raise PublicationError(
+                        "E_TARGET_PDF",
+                        f"{pdf.relative_to(tree)}: {pdf_report['outcome']}",
+                    )
+                inspected.append(pdf.relative_to(tree).as_posix())
+            report["metadata_records"] = len(entries)
+            report["pdfs_inspected"] = inspected
     except (OSError, ValueError, KeyError, subprocess.CalledProcessError, PublicationError) as exc:
         print(str(exc), file=sys.stderr)
         return 2
