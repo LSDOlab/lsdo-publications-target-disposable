@@ -1,0 +1,17 @@
+schema_version = 1
+publication_key = "rehearsal2029synthetic"
+primary_artifact = "0e0357b0aa72"
+
+[[artifacts]]
+id = "0e0357b0aa72"
+path = "pdf/rehearsal2029synthetic/rehearsal2029synthetic--preprint--0e0357b0aa72.pdf"
+kind = "preprint"
+sha256 = "0e0357b0aa727c3197aea3b820f98c11b75e4f3ab3dd5b95d7ff74c76e05cc2c"
+bytes = 2270
+media_type = "application/pdf"
+public = true
+rights_status = "approved"
+rights_basis = "Generated synthetic fixture; no copyrighted publication content"
+rights_reference = "docs/DISPOSABLE_REHEARSAL.md"
+approved_by = "hwangjt"
+approved_at = "2026-07-29T18:01:00Z"

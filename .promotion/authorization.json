@@ -2,55 +2,55 @@
   "approvals": {
     "metadata": {
       "actor": "hwangjt",
-      "approved_at": "2026-07-29T14:56:10Z",
-      "proposal_sha256": "d877d9f44ac74c6e2b642b28312e9aad0ab7c5490526b25cbc0eaed1206a9205"
+      "approved_at": "2026-07-29T18:01:00Z",
+      "proposal_sha256": "e6f39629750b9ae4fc76c4a2036d42967ce1560a5b81bbdc27352b0421419231"
     },
     "rights": {
       "actor": "hwangjt",
-      "approved_at": "2026-07-29T14:56:10Z",
+      "approved_at": "2026-07-29T18:01:00Z",
       "basis": "Generated synthetic fixture; no copyrighted publication content",
       "kind": "preprint",
-      "pdf_sha256": "cc8e444b96a596217be768e5b208343dd8a77bb52cdfbaf53284d3d454e54f25",
+      "pdf_sha256": "0e0357b0aa727c3197aea3b820f98c11b75e4f3ab3dd5b95d7ff74c76e05cc2c",
       "reference": "docs/DISPOSABLE_REHEARSAL.md"
     }
   },
-  "authorization_mac": "1652599e726a898c6e234961d08579c8cd10a8f0834927dbf0ed9aba598ea249",
-  "envelope_sha256": "37bfbfbfeca4103bc65cc7e58e6557ddad234f7a7caa0dfd854ac40f59bc322b",
+  "authorization_mac": "f567d31eacafda994a9dc99817d1e08b6783f54f1641067db87a7c8bf911f4d7",
+  "envelope_sha256": "abae4a2b0c6089416c5f49e8dfd642803f04b533200a67872a4708d61677ef3a",
   "files": [
     {
-      "bytes": 588,
-      "path": "catalog/artifacts/rehearsal2028synthetic.toml",
-      "sha256": "46395dbfb21786503389ef6d953615c0c49e9d5567028ab4e0da6f38e769aa0e"
+      "bytes": 589,
+      "path": "catalog/artifacts/rehearsal2029synthetic.toml",
+      "sha256": "2314515a5f9cfce7a606d5f38677e18576496c450ee2534431a4a54e89ee2aec"
     },
     {
-      "bytes": 1058,
+      "bytes": 1367,
       "path": "catalog/publications.bib",
-      "sha256": "6c2ab369a2956cbade59f4d50b805fed5d2b568792b2413cd81e6a27a6e2e99f"
+      "sha256": "1bc8956d193951425fd0d4b66b3f3940e248f07436aa0d45f5cabd06cfa46e83"
     },
     {
-      "bytes": 508,
-      "path": "pdf/rehearsal2028synthetic/rehearsal2028synthetic--preprint--cc8e444b96a5.pdf",
-      "sha256": "cc8e444b96a596217be768e5b208343dd8a77bb52cdfbaf53284d3d454e54f25"
+      "bytes": 2270,
+      "path": "pdf/rehearsal2029synthetic/rehearsal2029synthetic--preprint--0e0357b0aa72.pdf",
+      "sha256": "0e0357b0aa727c3197aea3b820f98c11b75e4f3ab3dd5b95d7ff74c76e05cc2c"
     }
   ],
-  "idempotency_key": "f3b82d00eed5b40ff1f69a300beb6f16192ac4f8243ae8fab89a58627574c0e4",
+  "idempotency_key": "f678053e58877e0cc5aec987dda049cca2e2a99789a0547246777b2aba7822ce",
   "proposal": {
     "artifact_kind": "preprint",
     "metadata_only": false,
-    "pdf_bytes": 508,
-    "pdf_sha256": "cc8e444b96a596217be768e5b208343dd8a77bb52cdfbaf53284d3d454e54f25",
-    "sha256": "d877d9f44ac74c6e2b642b28312e9aad0ab7c5490526b25cbc0eaed1206a9205"
+    "pdf_bytes": 2270,
+    "pdf_sha256": "0e0357b0aa727c3197aea3b820f98c11b75e4f3ab3dd5b95d7ff74c76e05cc2c",
+    "sha256": "e6f39629750b9ae4fc76c4a2036d42967ce1560a5b81bbdc27352b0421419231"
   },
   "schema_version": 1,
   "source": {
     "actor": "hwangjt",
-    "comment_id": 5119507571,
-    "head_sha": "252db8b786a065189f3557f7809f999284aae3ec",
-    "pr": 3,
+    "comment_id": 5121657864,
+    "head_sha": "ecaf6048e3adfad7ae37120dd2c1d358d9708f7a",
+    "pr": 9,
     "repository": "LSDOlab/lsdo-publications-intake-disposable"
   },
   "target": {
-    "base_sha": "c37c4b23ffab0199d509ab77365c9b7a15c265ff",
+    "base_sha": "7ed775a2d8b5bb5198720f36f9d87a16783d9fae",
     "repository": "LSDOlab/lsdo-publications-target-disposable"
   }
 }
