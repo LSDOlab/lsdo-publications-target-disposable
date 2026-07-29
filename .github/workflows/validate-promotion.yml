@@ -1,8 +1,11 @@
 name: validate-promotion
 
 on:
-  pull_request:
+  # Run the workflow definition from the trusted default branch. Candidate
+  # workflow and validator files must never execute with the authorization key.
+  pull_request_target:
     branches: [main]
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: read
@@ -12,11 +15,23 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Check out trusted validator at the exact base commit
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: trusted
           fetch-depth: 0
           persist-credentials: false
-      - name: Verify authenticated envelope and exact changed bytes
+      - name: Check out candidate bytes without executing candidate code
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: candidate
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Execute only the trusted-base validator
         env:
           PROMOTION_AUTHORIZATION_KEY: ${{ secrets.PROMOTION_AUTHORIZATION_KEY }}
-        run: python3 tools/target_check.py
+          TARGET_CANDIDATE_ROOT: ${{ github.workspace }}/candidate
+          TARGET_TRUSTED_ROOT: ${{ github.workspace }}/trusted
+        run: python3 trusted/tools/target_check.py
