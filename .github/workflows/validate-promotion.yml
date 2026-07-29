@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - name: Candidate workflow must remain inert
+        run: exit 97
       - name: Check out trusted validator at the exact base commit
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
