@@ -53,8 +53,17 @@ def main() -> int:
     pull = event.get("pull_request", {})
     base = pull.get("base", {}).get("sha", "")
     head = pull.get("head", {}).get("sha", "")
+    repository = os.environ["GITHUB_REPOSITORY"]
+    base_repository = pull.get("base", {}).get("repo", {}).get("full_name", "")
+    head_repository = pull.get("head", {}).get("repo", {}).get("full_name", "")
     if not base or not head:
         print("E_TARGET_EVENT: pull request SHAs are absent", file=sys.stderr)
+        return 2
+    if base_repository != repository or head_repository != repository:
+        print(
+            "E_TARGET_REPOSITORY: base and head must be in the protected target repository",
+            file=sys.stderr,
+        )
         return 2
     try:
         trusted_root = checkout_root("TARGET_TRUSTED_ROOT")
@@ -117,7 +126,7 @@ def main() -> int:
                 source_repository=envelope["source"]["repository"],
                 source_pr=envelope["source"]["pr"],
                 source_head_sha=envelope["source"]["head_sha"],
-                target_repository=os.environ["GITHUB_REPOSITORY"],
+                target_repository=repository,
                 target_base_sha=base,
                 signing_key=key.encode("utf-8"),
             )

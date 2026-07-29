@@ -9,9 +9,11 @@ on:
 
 permissions:
   contents: read
+  statuses: write
 
 jobs:
-  authorization-envelope:
+  trusted-authorization-runner:
+    name: trusted-authorization-runner
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -29,9 +31,22 @@ jobs:
           path: candidate
           fetch-depth: 0
           persist-credentials: false
+      - name: Mark the exact PR head authorization as pending
+        env:
+          TARGET_STATUS_TOKEN: ${{ github.token }}
+        run: python3 trusted/tools/head_status.py pending
       - name: Execute only the trusted-base validator
+        id: validate
         env:
           PROMOTION_AUTHORIZATION_KEY: ${{ secrets.PROMOTION_AUTHORIZATION_KEY }}
           TARGET_CANDIDATE_ROOT: ${{ github.workspace }}/candidate
           TARGET_TRUSTED_ROOT: ${{ github.workspace }}/trusted
         run: python3 trusted/tools/target_check.py
+      - name: Publish the required status on the exact PR head
+        if: always()
+        env:
+          TARGET_STATUS_TOKEN: ${{ github.token }}
+          VALIDATION_OUTCOME: ${{ steps.validate.outcome }}
+        run: >-
+          python3 trusted/tools/head_status.py
+          "${{ steps.validate.outcome == 'success' && 'success' || 'failure' }}"
